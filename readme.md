@@ -1,11 +1,13 @@
-#Testovoe
+# Testovoe
 Этот репозиторий был создан для решения тестового задания.
 
-##ТЗ
-![alt text](image-1.png)
+## ТЗ
+<p align="center">
+  <img src="image-1.png" alt="alt text">
+</p>
 
-##Запуск
-    Для запуска нужен linux, git, docker и docker-compose.
+## Запуск
+Для запуска нужен linux, git, docker и docker-compose.
 Я использовал wsl Ubuntu с установленным docker и docker-compose.
 ```
     Distributor ID: Ubuntu
@@ -13,7 +15,7 @@
     Release:        24.04
     Codename:       noble
 ```
-###Прописать команды
+### Прописать команды
 ```
     git init
     git remote add origin https://github.com/AllGalI/testovoe.git
@@ -22,19 +24,25 @@
     touch .env
 ```
 
-###Вставить это в .env
-DATABASE_HOST=db
-DATABASE_PORT=5432
-DATABASE_USER=username
-DATABASE_PASSWORD=pass
-DATABASE_NAME=testovoe
+### Вставить это в .env
+    DATABASE_HOST=db
+    DATABASE_PORT=5432
+    DATABASE_USER=username
+    DATABASE_PASSWORD=pass
+    DATABASE_NAME=testovoe
 
-###Запустить docker-compose
-```docker compose up -d --build```
-
-    Если во время поднятия контейнеров долго загружаются библиотеки
+### Запустить docker-compose
+    docker compose up -d --build
+    
+Если во время поднятия контейнеров долго загружаются библиотеки
 вкл/выкл vpn иногда причина в этом 
 
-Теперь сервис доступен на http://localhost:8000
-Swagger http://localhost:8000/docs
-Redoc http://localhost:8000/redoc
+Теперь сервис доступен на
+
+    http://localhost:8000
+Swagger
+
+    http://localhost:8000/docs
+Redoc
+    
+    http://localhost:8000/redoc
