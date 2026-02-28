@@ -11,3 +11,5 @@ echo "✅ Postgres is up - running migrations"
 alembic upgrade head
 
 echo "🚀 Starting app"
+
+python main.py
