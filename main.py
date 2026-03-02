@@ -2,12 +2,12 @@ import uvicorn
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
 
-from src.configs.db import Sessionmaker, seed_data
+from src.configs.db import get_session, seed_data
 from src.routes import *
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    with Sessionmaker() as session:
+    with get_session() as session:
         seed_data(session)
 
     yield

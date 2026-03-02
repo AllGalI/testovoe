@@ -7,10 +7,10 @@ from sqlalchemy.orm import sessionmaker, Session
 
 
 engine = create_engine(settings.sync_url, future=True)
-
+SessionMaker = sessionmaker(bind=engine)
 @contextmanager
-def get_session(self):
-    session = sessionmaker(bind=engine)
+def get_session():
+    session = SessionMaker()
     try:
         yield session
         session.commit()
