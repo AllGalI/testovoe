@@ -31,6 +31,9 @@
     DATABASE_PASSWORD=pass
     DATABASE_NAME=testovoe
 
+### Как установить docker и docker compose
+  https://timeweb.cloud/tutorials/docker/kak-ustanovit-docker-na-ubuntu-22-04#kak-ustanovit-docker-na-ubuntu-22-04
+
 ### Запустить docker-compose
     docker compose up -d --build
     
