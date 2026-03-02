@@ -1,3 +1,5 @@
+from contextlib import contextmanager
+
 from .app import settings
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker, Session
@@ -5,7 +7,18 @@ from sqlalchemy.orm import sessionmaker, Session
 
 
 engine = create_engine(settings.sync_url, future=True)
-Sessionmaker = sessionmaker(bind=engine)
+
+@contextmanager
+def get_session(self):
+    session = sessionmaker(bind=engine)
+    try:
+        yield session
+        session.commit()
+    except Exception:
+        session.rollback()
+        raise
+    finally:
+        session.close()
 
 def seed_data(session: Session, file_path: str = "test_data.sql"):
     exists = session.execute(text("SELECT 1 FROM organizations LIMIT 1")).fetchone()

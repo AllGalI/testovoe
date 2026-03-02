@@ -1,7 +1,7 @@
-from src.configs.db import Sessionmaker
+from src.configs.db import get_session
 
 
 class ServiceBase:
     def __init__(self):
-        self.session = Sessionmaker()
+        self.session = get_session()
         
