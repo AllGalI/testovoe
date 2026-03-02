@@ -4,9 +4,16 @@ from .app import settings
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker, Session
 
+engine = create_engine(
+    settings.sync_url,
+    future=True,
+    pool_size=20,
+    max_overflow=40,
+    pool_pre_ping=True,
+    pool_recycle=3600,
+    pool_timeout=30
+)
 
-
-engine = create_engine(settings.sync_url, future=True)
 SessionMaker = sessionmaker(bind=engine)
 @contextmanager
 def get_session():
