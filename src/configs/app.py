@@ -18,5 +18,13 @@ class Settings(BaseSettings):
             f"@{self.DATABASE_HOST}:{self.DATABASE_PORT}/{self.DATABASE_NAME}"
         )
 
+    @computed_field
+    @property
+    def async_url(self) -> str:
+        return (
+            f"postgresql+asyncpg://{self.DATABASE_USER}:{self.DATABASE_PASSWORD}"
+            f"@{self.DATABASE_HOST}:{self.DATABASE_PORT}/{self.DATABASE_NAME}"
+        )
+
 settings = Settings()
 

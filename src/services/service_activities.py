@@ -8,7 +8,7 @@ from sqlalchemy.orm import selectinload
 
 class ServiceActivities(ServiceBase):
     
-    def get(self):
+    async def get(self):
         stmt = (
             select(Activities)
             .where(Activities.level == 0)
@@ -17,8 +17,8 @@ class ServiceActivities(ServiceBase):
                 .selectinload(Activities.children)
             )
         )
-        
-        result = self.session.execute(stmt)
+
+        result = await self.session.execute(stmt)
         activities_orm = result.scalars().unique().all()
         return [ActivitySchema.model_validate(activity) for activity in activities_orm]
     

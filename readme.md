@@ -17,6 +17,8 @@
 ```
 ### Прописать команды
 ```
+    mkdir /home/testovoe
+    cd /home/testovoe/
     git init
     git remote add origin https://github.com/AllGalI/testovoe.git
     git branch -m master main
@@ -32,8 +34,13 @@
     DATABASE_NAME=testovoe
 
 ### Как установить docker и docker compose
-  https://timeweb.cloud/tutorials/docker/kak-ustanovit-docker-na-ubuntu-22-04#kak-ustanovit-docker-na-ubuntu-22-04
-
+ sudo apt update
+ sudo apt install curl software-properties-common ca-certificates apt-transport-https -y
+ wget -O- https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor | sudo tee /etc/apt/keyrings/docker.gpg > /dev/null
+ echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu jammy stable"| sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+ sudo apt update
+ apt-cache policy docker-ce
+ sudo apt install docker-ce -y
 ### Запустить docker-compose
     docker compose up -d --build
     

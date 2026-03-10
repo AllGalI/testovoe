@@ -27,6 +27,7 @@ class Activities(Base):
         secondary="activitytree",
         primaryjoin=lambda: Activities.id == ActivityTree.parent_id,
         secondaryjoin=lambda: Activities.id == ActivityTree.child_id,
+        lazy="noload",
         back_populates="parent"
     )
     

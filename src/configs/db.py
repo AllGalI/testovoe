@@ -4,6 +4,17 @@ from .app import settings
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker, Session
 
+from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
+
+engine_async = create_async_engine(settings.async_url, future=True)
+
+
+AsyncSessionLocal = async_sessionmaker(bind=engine_async, expire_on_commit=False, class_=AsyncSession)
+
+async def get_async_session():
+    async with AsyncSessionLocal() as session:
+        yield session
+
 engine = create_engine(
     settings.sync_url,
     future=True,

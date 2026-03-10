@@ -1,8 +1,8 @@
 from src.configs.db import get_session
+from sqlalchemy.ext.asyncio import AsyncSession
 
 
 class ServiceBase:
-    def __init__(self):
-        with get_session() as session:
-            self.session = session
+    def __init__(self, session: AsyncSession):
+        self.session = session
         
